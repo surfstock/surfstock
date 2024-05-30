@@ -1,0 +1,18 @@
+---
+//kite category page
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import CategoryPage from "../../layouts/CategoryPage.astro";
+import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
+const category = "kitesurf";
+const products = await getCollection(category);
+---
+
+<Layout title={capitalizeFirstLetter(category)}>
+    <meta
+        slot="head"
+        name="description"
+        content="Alle vores billige kitesurf produkter på restlageret. Billigt kitesurf udstyr i ubrugt stand til nybegyndere, let øvede og øvede surfere."
+    />
+    <CategoryPage category={category} products={products} />
+</Layout>

@@ -1,0 +1,176 @@
+.globalHeader {
+    box-shadow: $shadow--box-center;
+    margin-bottom: 1.5rem;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    background-color: white;
+    &__list {
+        width: 80%;
+        margin: auto;
+        max-width: 1200px;
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+        align-items: center;
+        list-style-type: none;
+    }
+    &__group {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        height: 60px;
+        &--fill {
+            flex: 1;
+            justify-content: flex-end;
+        }
+    }
+    &__link {
+        color: inherit;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &__dropdown {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        &List {
+            z-index: 5;
+            list-style-type: none;
+            display: none;
+            background-color: rgb(255, 255, 255, 0.8);
+            border: none;
+            box-shadow: $shadow--box;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            position: absolute;
+            left: -1rem;
+            bottom: 0;
+            transform: translateY(100%);
+            padding: 0.5rem 1rem;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: calc(100% + 2rem);
+        }
+        &:hover {
+            .globalHeader__dropdownList {
+                display: flex;
+            }
+        }
+    }
+    &__logo {
+        height: 40px;
+        transform: rotate(-8deg);
+    }
+    &__button {
+        background-color: transparent;
+        position: relative;
+        border: none;
+        cursor: pointer;
+    }
+    &__search {
+        position: relative;
+        &Input {
+            width: 150px;
+            appearance: none;
+            border-radius: 0;
+            border: 0;
+            font-size: $font--normal;
+            font-family: inherit;
+            color: inherit;
+            padding-bottom: 0.25rem;
+            border-bottom: 3px solid $color--pri-blue;
+            background-color: white;
+            &::placeholder {
+                font-size: $font--normal;
+                color: #757575;
+            }
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+        }
+        &Icon {
+            position: absolute;
+            right: 0;
+            top: -2px;
+            pointer-events: none;
+        }
+    }
+    &__icon {
+        height: 25px;
+        width: 25px;
+    }
+    &__cartAmount {
+        position: absolute;
+        top: -2.5px;
+        right: -7.5px;
+        width: 16px;
+        height: 16px;
+        display: grid;
+        place-items: center;
+        text-shadow: $shadow--text;
+        background-color: $color--pri-orange;
+        color: white;
+        border-radius: 50%;
+        font-size: 14px;
+    }
+    .showMobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: $breakpoint--md) {
+    .globalHeader {
+        &__list {
+            gap: 0.5rem;
+        }
+        &__logo {
+            height: 30px;
+        }
+        &__group {
+            gap: 0.5rem;
+        }
+        &__search {
+            &Landmark {
+                width: 100%;
+            }
+            &Input {
+                width: 100%;
+            }
+            &Icon {
+                position: absolute;
+                right: 0;
+                pointer-events: none;
+            }
+        }
+        .showMobile {
+            display: block;
+        }
+        .hideMobile {
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint--sm) {
+    .globalHeader {
+        &__list {
+            width: 90%;
+        }
+        &__search {
+            &Input {
+                height: 35px;
+            }
+        }
+        &__icon {
+            height: 35px;
+            width: 35px;
+        }
+        &__cartAmount {
+            top: 2.5px;
+            right: -2.5px;
+        }
+    }
+}

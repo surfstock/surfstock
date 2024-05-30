@@ -1,0 +1,51 @@
+.filter {
+    &__title {
+        font-size: $font--big;
+        margin-bottom: 1rem;
+    }
+    &__list {
+        margin-bottom: 20px;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    &__closeButton {
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        background-color: transparent;
+        color: $color--pri-blue;
+        border: none;
+        font-size: $font--huge;
+        cursor: pointer;
+        transform: scale(2) rotate(45deg);
+        &[aria-hidden="true"] {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .filter {
+        display: none;
+        &--visible {
+            display: block;
+            position: fixed;
+            width: 100%;
+            height: 100dvh;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            padding: 2rem;
+            overflow-y: auto;
+            background-color: rgb(255, 255, 255, 0.8);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
+        &__list {
+            gap: 1rem;
+        }
+    }
+}

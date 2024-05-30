@@ -1,0 +1,31 @@
+---
+//declare the scema
+const schema = {
+    "@context": "http://schema.org",
+    "@type": "HobbyShop",
+    name: "Surfstock",
+    url: "https://surfstock.dk/",
+    logo: "https://surfstock.dk/logo.svg",
+    email: "support@surfstock.dk",
+    description:
+        "Surfstock er et restlager fra en tidligere dansk surfbutik, som vi desværre blev nødt til at lukke ned. Vi har dog stadig en masse fede surfprodukter tilbage, som vi nu tilbyder vores kunder til uhørt lave priser.",
+    slogan: "Alt det en surfer drømmer om. Bare billigere.",
+    currenciesAccepted: "DKK",
+    paymentAccepted: "Credit Card",
+    priceRange: "$",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "Mynstersvej 11",
+        addressLocality: "Frederiksberg",
+        postalCode: "1827",
+        addressCountry: "DK",
+    },
+};
+---
+
+{/*generate the crawlable element with the schema*/}
+<script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+/>

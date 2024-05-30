@@ -1,0 +1,417 @@
+backend:
+    ##login method activated in netlify
+    name: git-gateway
+    #github repo with the project
+    repo: surfstock/surfstock-ecom-website
+    branch: main
+media_folder: static/img
+public_folder: /img
+#logo for login page
+logo_url: https://surfstock.dk/logo.svg
+#product collections
+collections:
+    - name: windsurf
+      #hide editor
+      editor:
+          preview: false
+      label: Windsurf
+      #folder for new products
+      folder: src/content/windsurf
+      #folders to store product images
+      media_folder: /public/productImages/windsurf
+      public_folder: /productImages/windsurf
+      #allow the user to create more products
+      create: true
+      #fields for every product
+      fields:
+          - {
+                label: "Titel",
+                name: "title",
+                widget: "string",
+                hint: "Produktets titel",
+            }
+          - {
+                label: "Brand",
+                name: "brand",
+                widget: "string",
+                hint: "Produktets brand.",
+            }
+          - {
+                label: "Årgang",
+                name: "year",
+                widget: "number",
+                hint: "Produktets årgang.",
+                required: false,
+            }
+          - {
+                label: "Type",
+                name: "type",
+                widget: "string",
+                hint: "F.eks. 'Forlænger', 'Board' eller 'Sejl' (uden '').",
+            }
+          - {
+                label: "Salgspris",
+                name: "price",
+                widget: "number",
+                value_type: "float",
+                hint: "Produktets pris, brug '.' til decimaler og ingen 1000-seperator *(9999.99)*.",
+            }
+          - {
+                label: "Oprindelig Pris",
+                name: "oldPrice",
+                widget: "number",
+                required: false,
+                value_type: "float",
+                hint: "Hvis produktet oprindeligt var dyere, så udfyld dette feldt men den gamle pris.",
+            }
+          - {
+                label: "Størrelser & Ekstrapris",
+                name: "sizes",
+                widget: "list",
+                fields:
+                    [
+                        {
+                            label: "Størrelse (evt. også farve)",
+                            name: "size",
+                            widget: "string",
+                        },
+                        {
+                            label: "Ekstrapris",
+                            name: "extraPrice",
+                            widget: "number",
+                            default: 0,
+                            hint: "Yderligere pris for denne variant, som bliver tilføjget til salgsprisen. Brug ikke kommatal.",
+                        },
+                    ],
+            }
+          - {
+                label: "Udvalgt billede",
+                name: "image",
+                widget: "image",
+                allow_multiple: false,
+                hint: "Det primære billede, som ses i Google og når produktet deles.",
+            }
+          - {
+                label: "Yderligere billeder",
+                name: "images",
+                widget: "image",
+                required: false,
+                hint: "Ydereligere billeder, som ses i produktets billedgalleri.",
+            }
+          - {
+                label: "Ekstra Information",
+                name: "details",
+                widget: "list",
+                fields:
+                    [
+                        { label: "Label", name: "label", widget: "string" },
+                        { label: "Værdi", name: "value", widget: "string" },
+                    ],
+            }
+          - {
+                label: "Lang Produkttekst",
+                name: "content",
+                widget: "markdown",
+                required: false,
+                hint: "En længere tekst, der fortæller om produktet, og som bruges på produktsiden.",
+            }
+    - name: bekladning
+      editor:
+          preview: false
+      label: Beklædning
+      folder: src/content/beklædning
+      media_folder: /public/productImages/bekladning
+      public_folder: /productImages/bekladning
+      create: true
+      fields:
+          - {
+                label: "Titel",
+                name: "title",
+                widget: "string",
+                hint: "Produktets titel",
+            }
+          - {
+                label: "Brand",
+                name: "brand",
+                widget: "string",
+                hint: "Produktets brand.",
+            }
+          - {
+                label: "Årgang",
+                name: "year",
+                widget: "number",
+                hint: "Produktets årgang.",
+                required: false,
+            }
+          - {
+                label: "Type",
+                name: "type",
+                widget: "string",
+                hint: "F.eks. 'Vest', 'Undervest' eller 'Våddragt' (uden '').",
+            }
+          - {
+                label: "Salgspris",
+                name: "price",
+                widget: "number",
+                value_type: "float",
+                hint: "Produktets pris, brug '.' til decimaler og ingen 1000-seperator *(9999.99)*.",
+            }
+          - {
+                label: "Oprindelig Pris",
+                name: "oldPrice",
+                widget: "number",
+                required: false,
+                value_type: "float",
+                hint: "Hvis produktet oprindeligt var dyere, så udfyld dette feldt men den gamle pris.",
+            }
+          - {
+                label: "Størrelser & Ekstrapris",
+                name: "sizes",
+                widget: "list",
+                fields:
+                    [
+                        {
+                            label: "Størrelse (evt. også farve)",
+                            name: "size",
+                            widget: "string",
+                        },
+                        {
+                            label: "Ekstrapris",
+                            name: "extraPrice",
+                            widget: "number",
+                            default: 0,
+                            hint: "Yderligere pris for denne variant, som bliver tilføjget til salgsprisen. Brug ikke kommatal.",
+                        },
+                    ],
+            }
+          - {
+                label: "Udvalgt billede",
+                name: "image",
+                widget: "image",
+                allow_multiple: false,
+                hint: "Det primære billede, som ses i Google og når produktet deles.",
+            }
+          - {
+                label: "Yderligere billeder",
+                name: "images",
+                widget: "image",
+                required: false,
+                hint: "Ydereligere billeder, som ses i produktets billedgalleri.",
+            }
+          - {
+                label: "Ekstra Information",
+                name: "details",
+                widget: "list",
+                fields:
+                    [
+                        { label: "Label", name: "label", widget: "string" },
+                        { label: "Værdi", name: "value", widget: "string" },
+                    ],
+            }
+          - {
+                label: "Lang Produkttekst",
+                name: "content",
+                widget: "markdown",
+                required: false,
+                hint: "En længere tekst, der fortæller om produktet, og som bruges på produktsiden.",
+            }
+    - name: kitesurf
+      editor:
+          preview: false
+      label: Kitesurf
+      folder: src/content/kitesurf
+      media_folder: /public/productImages/kitesurf
+      public_folder: /productImages/kitesurf
+      create: true
+      fields:
+          - {
+                label: "Titel",
+                name: "title",
+                widget: "string",
+                hint: "Produktets titel",
+            }
+          - {
+                label: "Brand",
+                name: "brand",
+                widget: "string",
+                hint: "Produktets brand.",
+            }
+          - {
+                label: "Årgang",
+                name: "year",
+                widget: "number",
+                hint: "Produktets årgang.",
+                required: false,
+            }
+          - {
+                label: "Type",
+                name: "type",
+                widget: "string",
+                hint: "F.eks. 'Vest', 'Undervest' eller 'Våddragt' (uden '').",
+            }
+          - {
+                label: "Salgspris",
+                name: "price",
+                widget: "number",
+                value_type: "float",
+                hint: "Produktets pris, brug '.' til decimaler og ingen 1000-seperator *(9999.99)*.",
+            }
+          - {
+                label: "Oprindelig Pris",
+                name: "oldPrice",
+                widget: "number",
+                required: false,
+                value_type: "float",
+                hint: "Hvis produktet oprindeligt var dyere, så udfyld dette feldt men den gamle pris.",
+            }
+          - {
+                label: "Størrelser & Ekstrapris",
+                name: "sizes",
+                widget: "list",
+                fields:
+                    [
+                        {
+                            label: "Størrelse (evt. også farve)",
+                            name: "size",
+                            widget: "string",
+                        },
+                        {
+                            label: "Ekstrapris",
+                            name: "extraPrice",
+                            widget: "number",
+                            default: 0,
+                            hint: "Yderligere pris for denne variant, som bliver tilføjget til salgsprisen. Brug ikke kommatal.",
+                        },
+                    ],
+            }
+          - {
+                label: "Udvalgt billede",
+                name: "image",
+                widget: "image",
+                allow_multiple: false,
+                hint: "Det primære billede, som ses i Google og når produktet deles.",
+            }
+          - {
+                label: "Yderligere billeder",
+                name: "images",
+                widget: "image",
+                required: false,
+                hint: "Ydereligere billeder, som ses i produktets billedgalleri.",
+            }
+          - {
+                label: "Ekstra Information",
+                name: "details",
+                widget: "list",
+                fields:
+                    [
+                        { label: "Label", name: "label", widget: "string" },
+                        { label: "Værdi", name: "value", widget: "string" },
+                    ],
+            }
+          - {
+                label: "Lang Produkttekst",
+                name: "content",
+                widget: "markdown",
+                required: false,
+                hint: "En længere tekst, der fortæller om produktet, og som bruges på produktsiden.",
+            }
+    - name: sup
+      editor:
+          preview: false
+      label: SUP
+      folder: src/content/sup
+      media_folder: /public/productImages/sup
+      public_folder: /productImages/sup
+      create: true
+      fields:
+          - {
+                label: "Titel",
+                name: "title",
+                widget: "string",
+                hint: "Produktets titel",
+            }
+          - {
+                label: "Brand",
+                name: "brand",
+                widget: "string",
+                hint: "Produktets brand.",
+            }
+          - {
+                label: "Årgang",
+                name: "year",
+                widget: "number",
+                hint: "Produktets årgang.",
+                required: false,
+            }
+          - {
+                label: "Type",
+                name: "type",
+                widget: "string",
+                hint: "F.eks. 'Vest', 'Undervest' eller 'Våddragt' (uden '').",
+            }
+          - {
+                label: "Salgspris",
+                name: "price",
+                widget: "number",
+                value_type: "float",
+                hint: "Produktets pris, brug '.' til decimaler og ingen 1000-seperator *(9999.99)*.",
+            }
+          - {
+                label: "Oprindelig Pris",
+                name: "oldPrice",
+                widget: "number",
+                required: false,
+                value_type: "float",
+                hint: "Hvis produktet oprindeligt var dyere, så udfyld dette feldt men den gamle pris.",
+            }
+          - {
+                label: "Størrelser & Ekstrapris",
+                name: "sizes",
+                widget: "list",
+                fields:
+                    [
+                        {
+                            label: "Størrelse (evt. også farve)",
+                            name: "size",
+                            widget: "string",
+                        },
+                        {
+                            label: "Ekstrapris",
+                            name: "extraPrice",
+                            widget: "number",
+                            default: 0,
+                            hint: "Yderligere pris for denne variant, som bliver tilføjget til salgsprisen. Brug ikke kommatal.",
+                        },
+                    ],
+            }
+          - {
+                label: "Udvalgt billede",
+                name: "image",
+                widget: "image",
+                allow_multiple: false,
+                hint: "Det primære billede, som ses i Google og når produktet deles.",
+            }
+          - {
+                label: "Yderligere billeder",
+                name: "images",
+                widget: "image",
+                required: false,
+                hint: "Ydereligere billeder, som ses i produktets billedgalleri.",
+            }
+          - {
+                label: "Ekstra Information",
+                name: "details",
+                widget: "list",
+                fields:
+                    [
+                        { label: "Label", name: "label", widget: "string" },
+                        { label: "Værdi", name: "value", widget: "string" },
+                    ],
+            }
+          - {
+                label: "Lang Produkttekst",
+                name: "content",
+                widget: "markdown",
+                required: false,
+                hint: "En længere tekst, der fortæller om produktet, og som bruges på produktsiden.",
+            }

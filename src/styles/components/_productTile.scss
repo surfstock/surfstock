@@ -1,0 +1,44 @@
+.productTile {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    color: inherit;
+    text-decoration: none;
+    box-shadow: $shadow--box-center;
+    position: relative;
+    overflow: hidden;
+    &__badge {
+        position: absolute;
+        width: 100px;
+        text-align: center;
+        top: 1rem;
+        right: -1.5rem;
+        z-index: 2;
+        background-color: $color--pri-orange;
+        color: white;
+        text-shadow: $shadow--text;
+        transform: rotate(45deg);
+    }
+    &__image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: 200ms;
+        background-color: white;
+    }
+    &__content {
+        background-color: white;
+        z-index: 1;
+        padding: 1rem;
+        gap: 0.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &:hover {
+        .productTile__image {
+            transform: scale(1.2);
+        }
+    }
+}

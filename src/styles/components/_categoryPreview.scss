@@ -1,0 +1,70 @@
+.categoryPreview {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    &__tile {
+        width: calc(50% - 0.75rem);
+        display: grid;
+        place-items: center;
+        padding-block: 4rem;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        &:nth-of-type(1) {
+            background-image: url("/kategori-windsurf.jpg");
+        }
+        &:nth-of-type(2) {
+            background-image: url("/kategori-kitesurf.jpg");
+        }
+        &:nth-of-type(3) {
+            background-image: url("/kategori-sup.jpg");
+        }
+        &:nth-of-type(4) {
+            background-image: url("/kategori-bekladning.jpg");
+        }
+    }
+    &__title {
+        font-size: $font--big;
+        margin-bottom: 1rem;
+        color: white;
+        z-index: 1;
+    }
+    &__link {
+        background-color: $color--pri-orange;
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1.5rem;
+        z-index: 1;
+        text-shadow: $shadow--text;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &__gradientBackground {
+        position: absolute;
+        inset: 0;
+        background-color: transparentize($color--pri-blue, 0.3);
+    }
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .categoryPreview {
+        &__tile {
+            width: 100%;
+            padding-block: 3rem;
+            &:nth-of-type(1) {
+                background-image: url("/kategori-windsurf-mobil.jpg");
+            }
+            &:nth-of-type(2) {
+                background-image: url("/kategori-kitesurf-mobil.jpg");
+            }
+            &:nth-of-type(3) {
+                background-image: url("/kategori-sup-mobil.jpg");
+            }
+            &:nth-of-type(4) {
+                background-image: url("/kategori-bekladning-mobil.jpg");
+            }
+        }
+    }
+}

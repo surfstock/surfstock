@@ -1,0 +1,49 @@
+---
+//global footer
+import Segment from "../Segment.astro";
+import Wave from "../Wave.astro";
+---
+
+<nav class="globalFooter">
+    <div class="globalFooter__content">
+        <div class="globalFooter__info section">
+            <Wave />
+            <p class="globalFooter__title">Surfstock</p>
+            <p>Alt det en surfer drømmer om. Bare&nbsp;billigere.</p>
+        </div>
+        <Segment title="Navigation">
+            <ul class="globalFooter__list">
+                <li>
+                    <a class="link" href="/windsurf">Windsurf</a>
+                </li>
+                <li>
+                    <a class="link" href="/kitesurf">Kitesurf</a>
+                </li>
+                <li>
+                    <a class="link" href="/sup">SUP</a>
+                </li>
+                <li>
+                    <a class="link" href="/bekladning">Beklædning</a>
+                </li>
+            </ul>
+        </Segment>
+        <Segment title="Kontakt Os">
+            <ul class="globalFooter__list">
+                <li>
+                    <a class="link" href="/faq">FAQ & Support</a>
+                </li>
+                <li>
+                    <a class="link" href="mailto:support@surfstock.dk">support@surfstock.dk</a>
+                </li>
+                <li>
+                    <a
+                        class="link"
+                        target="_blank"
+                        href="https://maps.app.goo.gl/cqxhoMxXtJSVcB7N7">
+                        Mynstersvej 11, Frederiksberg
+                    </a>
+                </li>
+            </ul>
+        </Segment>
+    </div>
+</nav>

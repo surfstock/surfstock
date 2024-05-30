@@ -1,0 +1,27 @@
+---
+import Segment from "./Segment.astro";
+
+const { title, filters, filterName } = Astro.props;
+---
+
+<Segment title={title}>
+    <ul class="filter__list">
+        {
+            filters.map((filter) => {
+                return (
+                    <li>
+                        <label class="checkbox">
+                            <input
+                                type="radio"
+                                class="checkbox__input"
+                                name={filterName}
+                                data-multifilter={filter}
+                            />
+                            {filter}
+                        </label>
+                    </li>
+                );
+            })
+        }
+    </ul>
+</Segment>

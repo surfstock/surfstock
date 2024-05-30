@@ -1,0 +1,259 @@
+---
+//default category page layout
+import Column from "../components/Column.astro";
+import Filter from "../components/Filter.astro";
+import ProductTile from "../components/ProductTile.astro";
+import Row from "../components/Row.astro";
+import Segment from "../components/Segment.astro";
+import Wave from "../components/Wave.astro";
+//get the current products (NOT ALL) and the current category from the props
+const { products, category } = Astro.props;
+
+//function to extract filter categories from products
+function getCategoryFromArray(array, category) {
+    //create a set to ensure no duplicate categories
+    const categories = new Set();
+    //foreach product, if the desired category is decalred, then add to set
+    array.forEach((product) => {
+        if (product.data[category] !== undefined) {
+            categories.add(product.data[category]);
+        }
+    });
+    //retrun array of filter categories
+    return Array.from(categories);
+}
+//get the desired filter values
+const productTypes = getCategoryFromArray(products, "type");
+const productBrands = getCategoryFromArray(products, "brand");
+const productYears = getCategoryFromArray(products, "year").sort((a, b) => b - a);
+const productPriceRanges = ["0-300", "300-600", "600-1000", "1000-3000", "3000+"];
+---
+
+<Row>
+    <Column>
+        <figure class="filter">
+            <button class="filter__closeButton" aria-hidden="true" aria-label="Luk filtermenu">
+                +
+            </button>
+            <figcaption class="filter__title">Filtre</figcaption>
+            <Filter title="Produkttype" filters={productTypes} filterName="type" />
+            <Filter title="Prisleje" filters={productPriceRanges} filterName="priceRange" />
+            <Filter title="Brand" filters={productBrands} filterName="brand" />
+            <Filter title="Årgang" filters={productYears} filterName="year" />
+        </figure>
+    </Column>
+    <Column wide>
+        <div class="category">
+            <Wave />
+            <h1 class="capitalize">{category}</h1>
+            <div class="category__dropdown category__dropdown--mobileOnly">
+                <Segment title="Filtrer produkter">
+                    <div class="dropdown dropdown--plus">
+                        <button class="dropdown__select" id="openFilterMenu">
+                            Åben filtermenu
+                        </button>
+                    </div>
+                </Segment>
+            </div>
+            <div class="category__dropdown">
+                <Segment title="Sorter efter">
+                    <div class="dropdown">
+                        <select
+                            id="sortSelector"
+                            class="dropdown__select"
+                            aria-label="Sorter produkter">
+                            <option value="price,asc">Billigste</option>
+                            <option value="price,desc">Dyreste</option>
+                            <option value="savings,asc">Mindste besparelse</option>
+                            <option value="savings,desc">Største besparelse</option>
+                        </select>
+                    </div>
+                </Segment>
+            </div>
+        </div>
+        <ul class="grid grid--filterizr">
+            {
+                //calcualte pricerange on product for filters
+                products.map((product) => {
+                    let productPriceRange;
+                    if (product.data.price < 300) {
+                        productPriceRange = "0-300";
+                    } else if (product.data.price < 600) {
+                        productPriceRange = "300-600";
+                    } else if (product.data.price < 1000) {
+                        productPriceRange = "600-1000";
+                    } else if (product.data.price < 3000) {
+                        productPriceRange = "1000-3000";
+                    } else {
+                        productPriceRange = "3000+";
+                    }
+                    /*data-category for filters, data-price & data-savins for sorting*/
+                    return (
+                        <li
+                            class="grid__item"
+                            data-category={
+                                product.data.type +
+                                "," +
+                                product.data.brand +
+                                "," +
+                                product.data.year +
+                                "," +
+                                productPriceRange
+                            }
+                            data-price={String(product.data.price).padStart(5, "0")}
+                            data-savings={
+                                product.data.oldPrice
+                                    ? String(product.data.oldPrice - product.data.price).padStart(
+                                          5,
+                                          "0"
+                                      )
+                                    : "0000"
+                            }>
+                            <ProductTile product={product} category={category} />
+                        </li>
+                    );
+                })
+            }
+        </ul>
+        <div id="noProductsDisclaimer" hidden="true" aria-hidden="true">
+            <p>
+                Der blev ikke fundet noget produkt, som opfylder <em>alle</em> dine filtreringskrav.
+            </p>
+        </div>
+    </Column>
+</Row>
+
+<script>
+    //import filterizr and create custom options
+    import Filterizr from "filterizr";
+    const options = {
+        animationDuration: 0,
+        gridItemsSelector: ".grid__item",
+        gutterPixels: 16,
+        multifilterLogicalOperator: "and",
+        setupControls: false,
+        spinner: {
+            enabled: true,
+            fillColor: "#FA8102",
+            styles: {
+                height: "75px",
+                margin: "0 auto",
+                width: "75px",
+                "z-index": 2,
+            },
+        },
+    };
+
+    //create new filterizr instance
+    const filterizr = new Filterizr(".grid", options);
+    //add event listener to the sort dropdown
+    document.querySelector("#sortSelector").addEventListener("change", (e) => {
+        const attribute = e.target.value.split(",")[0];
+        const order = e.target.value.split(",")[1];
+        filterizr.sort(attribute, order);
+    });
+    //default sort price ascending
+    filterizr.sort("price", "asc");
+
+    new ResizeObserver(() => {
+        let childElements = document.querySelector(".grid").children;
+        let invisibleChildElements = 0;
+        for (var i = 0; i < childElements.length; i++) {
+            if (childElements[i].getAttribute("style").substring(0, 11) === "opacity: 0;") {
+                invisibleChildElements++;
+            }
+        }
+        let isEmpty;
+        if (childElements.length === invisibleChildElements) {
+            isEmpty = true;
+        } else {
+            isEmpty = false;
+        }
+        const noProductDisclaimer = document.querySelector("#noProductsDisclaimer");
+        if (isEmpty) {
+            noProductDisclaimer.hidden = false;
+            noProductDisclaimer.setAttribute("aria-hidden", "false");
+        } else {
+            noProductDisclaimer.hidden = true;
+            noProductDisclaimer.setAttribute("aria-hidden", "true");
+        }
+    }).observe(document.querySelector(".grid"));
+
+    window.onload = () => {
+        //check for a pre-selected filter type in the url
+        const preSelectedFilter = new URLSearchParams(document.location.search).get("preFilter");
+
+        if (preSelectedFilter !== null) {
+            //if type is found, then filter for it
+            filterizr.filter([preSelectedFilter]);
+
+            //and add visual cue to the user
+            const typeCheckBox = document.querySelector(
+                "[data-multifilter='" + preSelectedFilter + "'"
+            );
+            typeCheckBox.classList.add("checkbox__input--checked");
+            typeCheckBox.checked = true;
+        }
+
+        //get all radio buttons on load
+        const radioBoxes = document.querySelectorAll(".checkbox__input");
+        radioBoxes.forEach((box) => {
+            //add an event listener to each radio box
+            box.addEventListener("click", (e) => {
+                //if radio is checked, remove check
+                if (e.target.classList[1] === "checkbox__input--checked") {
+                    box.checked = false;
+                }
+
+                //remove all checked states to add them in next step
+                radioBoxes.forEach((box) => {
+                    box.classList.remove("checkbox__input--checked");
+                });
+
+                //add chekced state on checked radio buttons
+                const getCheckedInputValue = (name) => {
+                    const input = document.querySelector(`input[name=${name}]:checked`);
+                    input?.classList.add("checkbox__input--checked");
+                    return input?.getAttribute("data-multifilter");
+                };
+                let currentFilters = [
+                    getCheckedInputValue("type"),
+                    getCheckedInputValue("brand"),
+                    getCheckedInputValue("year"),
+                    getCheckedInputValue("priceRange"),
+                ].filter((filter) => filter !== undefined);
+                filterizr.filter(currentFilters);
+            });
+        });
+        if (performance.getEntriesByType("navigation")[0].type === "back_forward") {
+            //remove all checked states
+            radioBoxes.forEach((box) => {
+                box.classList.remove("checkbox__input--checked");
+                box.checked = false;
+            });
+
+            //check for previous preselected type
+            const preSelectedType = new URLSearchParams(document.location.search).get("type");
+            if (preSelectedType !== null) {
+                //if type is found, then filter for it
+                filterizr.filter([preSelectedType]);
+
+                //and add visual cue to the user
+                const typeCheckBox = document.querySelector(
+                    "[data-multifilter='" + preSelectedType + "'"
+                );
+                typeCheckBox.classList.add("checkbox__input--checked");
+                typeCheckBox.checked = true;
+            }
+        }
+    };
+
+    document.querySelector("#openFilterMenu").addEventListener("click", () => {
+        document.querySelector(".filter").classList.add("filter--visible");
+        document.querySelector(".filter__closeButton").setAttribute("aria-hidden", "false");
+    });
+    document.querySelector(".filter__closeButton").addEventListener("click", () => {
+        document.querySelector(".filter").classList.remove("filter--visible");
+        document.querySelector(".filter__closeButton").setAttribute("aria-hidden", "true");
+    });
+</script>

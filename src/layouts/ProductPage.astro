@@ -1,0 +1,148 @@
+---
+//default product page layout
+import ProductSchema from "../components/schemas/ProductSchema.astro";
+import BuyButton from "../components/snipcart/BuyButton.astro";
+import Row from "../components/Row.astro";
+import Column from "../components/Column.astro";
+import ProductGallery from "../components/ProductGallery";
+import TabSection from "../components/TabSection";
+import formatPrice from "../utils/formatPrice";
+import Wave from "../components/Wave.astro";
+import Segment from "../components/Segment.astro";
+import { getCollection } from "astro:content";
+import ProductTile from "../components/ProductTile.astro";
+const { product } = Astro.props;
+//to show alternative products within the same category
+let alternativeProducts = await getCollection(product.collection);
+alternativeProducts = alternativeProducts.filter(
+    (alternativeProduct) =>
+        //show the product if it is same type and is not the current product
+        alternativeProduct.data.type === product.data.type &&
+        alternativeProduct.data.image !== product.data.image
+);
+//get 6 random products from the list
+alternativeProducts.sort(() => 0.5 - Math.random());
+alternativeProducts = alternativeProducts.slice(0, 6);
+---
+
+<script defer src="/scripts/fetchProductStock.js"></script>
+<ProductSchema product={product} collection={product.collection} />
+<Row>
+    <Column>
+        <ProductGallery client:load product={product.data} />
+    </Column>
+    <Column>
+        <nav class="breadcrumbs" aria-label="Brødkrummesti">
+            <ol class="breadcrumbs__list">
+                <li class="breadcrumbs__link">
+                    <a
+                        class="link"
+                        href={"/" + product.collection.replaceAll("æ", "a")}
+                        aria-current="page">
+                        {product.collection.replace("sup", "SUP")}
+                    </a>
+                </li>
+                <li class="breadcrumbs__link">
+                    <a class="link" href={Astro.url.pathname} aria-current="page">
+                        {product.data.brand}
+                        {product.data.title}
+                    </a>
+                </li>
+            </ol>
+        </nav>
+        <Wave />
+        <hgroup class="capitalize">
+            <h1>
+                {product.data.brand}
+                {product.data.title}
+            </h1>
+            <p>
+                {product.collection.replace("sup", "SUP")}
+                {product.data.type}
+                {product.data.year}
+            </p>
+        </hgroup>
+        <p class="price">
+            {
+                product.data.oldPrice && (
+                    <del class="price__old">{formatPrice(product.data.oldPrice)} DKK</del>
+                )
+            }
+            <b>{formatPrice(product.data.price)} DKK</b>
+        </p>
+        <Segment title="Levering">
+            {
+                product.data.type === "Board" ||
+                product.data.type === "Sejl" ||
+                product.data.type === "Mast" ? (
+                    <p>
+                        Dette produkt kan kun hjemmeleveres til adresser i Storkøbenhavn eller
+                        afhentes på restlagerets adresse efter aftale.
+                    </p>
+                ) : (
+                    <p>GLS Standardlevering (2-3 arbejdsdage)</p>
+                )
+            }
+        </Segment>
+        <Segment title="Størrelse">
+            <div class="dropdown">
+                <select id="size" class="dropdown__select">
+                    {
+                        product.data.sizes.map((size) => {
+                            return (
+                                <option value={size.size}>
+                                    {size.size}
+                                    {size.extraPrice !== 0
+                                        ? " +" + size.extraPrice + ",00 DKK"
+                                        : ""}
+                                </option>
+                            );
+                        })
+                    }
+                </select>
+            </div>
+        </Segment>
+        <BuyButton product={product} />
+        <Segment title="Bemærk">
+            <p>
+                Nogle produkter har været langtidsopbevaret i op til 15 år. Disse produkter kan have
+                mindre misfarvninger eller ridser, selvom produktet aldrig har været i brug.
+            </p>
+        </Segment>
+    </Column>
+</Row>
+<Row>
+    <TabSection
+        client:visible
+        product={product.data}
+        collection={product.collection.replace("sup", "SUP")}
+    />
+</Row>
+<Row>
+    <Column>
+        <h2>Alternative Produkter</h2>
+        <ul class="grid">
+            {
+                alternativeProducts.map((product) => {
+                    return (
+                        <li class="grid__item">
+                            <ProductTile
+                                product={product}
+                                category={product.collection.replace("sup", "SUP")}
+                            />
+                        </li>
+                    );
+                })
+            }
+        </ul>
+    </Column>
+</Row>
+<script is:inline>
+    //make the select element change the custom value on the buy button
+    //necessary for adding the right (currently selected) item to cart
+    const button = document.getElementById("buy-button");
+    const select = document.getElementById("size");
+    select.addEventListener("change", () => {
+        button.setAttribute("data-item-custom1-value", select.value);
+    });
+</script>

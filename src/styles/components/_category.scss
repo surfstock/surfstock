@@ -1,0 +1,37 @@
+.category {
+    padding-inline: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    &__dropdown {
+        align-self: flex-end;
+        width: calc(33% - 9px);
+        margin-right: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        &--mobileOnly {
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint--lg) {
+    .category {
+        &__dropdown {
+            width: calc(50% - 0.5rem);
+            margin-right: 0px;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .category {
+        &__dropdown {
+            width: 100%;
+            margin-right: 0px;
+            &--mobileOnly {
+                display: flex;
+            }
+        }
+    }
+}

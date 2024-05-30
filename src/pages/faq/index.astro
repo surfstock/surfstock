@@ -1,0 +1,192 @@
+---
+//faq page
+import Column from "../../components/Column.astro";
+import Row from "../../components/Row.astro";
+import Layout from "../../layouts/Layout.astro";
+import Detail from "../../components/Detail.astro";
+import Wave from "../../components/Wave.astro";
+---
+
+<Layout title="FAQ & Support">
+    <meta
+        slot="head"
+        name="description"
+        content="Få svar på alle dine spørgsmål om Surfstock og dets restlager, eller tag kontakt direkte til vores support."
+    />
+    <Row>
+        <Column>
+            <Wave />
+            <h1>Surfstock FAQ & Support</h1>
+        </Column>
+    </Row>
+    <Row>
+        <Column>
+            <h2>Generelle oplysninger</h2>
+            <p>
+                Surfstock er et restlager fra en tidligere dansk surfbutik, som
+                vi desværre blev nødt til at lukke ned. Vi har dog stadig en
+                masse fede surfprodukter tilbage, som vi nu tilbyder vores
+                kunder til uhørt lave priser.
+            </p>
+        </Column>
+        <Column>
+            <ul class="list faq__detailsMarginTop">
+                <li>
+                    <Detail title="Hvor ligger restlageret">
+                        <p>
+                            Restlageret ligger på
+                            <a
+                                class="link"
+                                target="_blank"
+                                href="https://maps.app.goo.gl/cqxhoMxXtJSVcB7N7"
+                            >
+                                Mynstersvej 11, Frederiksberg</a
+                            >, men det er kun åbent efter aftale (bl.a. ved
+                            afhenting af boards eller sejl).
+                        </p>
+                    </Detail>
+                </li>
+                <li>
+                    <Detail
+                        title="Hvorfor har jeg ikke modtaget min ordrebekræftelse?"
+                    >
+                        <p>
+                            Din ordrebekræftelse kan være havnet i din spam
+                            folder. Hvis du ikke har modtaget en bekræftelse,
+                            skal du kontakte os.
+                        </p>
+                    </Detail>
+                </li>
+                <li>
+                    <Detail title="Hvordan kan jeg kontakte jer">
+                        <p>
+                            Du kan altid skrive en mail til os på
+                            <a class="link" href="mailto:support@surfstock.dk">
+                                support@surfstock.dk</a
+                            >.
+                        </p>
+                    </Detail>
+                </li>
+            </ul>
+        </Column>
+    </Row>
+    <Row>
+        <Column>
+            <h2>Levering</h2>
+            <p>
+                Ordrer med små produkter kan leveres med GLS Standardlevering
+                (leveringstid på 2-3 arbejdsdage).
+            </p>
+            <p>
+                Større produkter (boards, sejl og master) kan enten
+                hjemmeleveres til adresser i Storkøbenhavn eller afhentes på
+                restlagerets adresse efter aftale.
+            </p>
+        </Column>
+        <Column>
+            <ul class="list faq__detailsMarginTop">
+                <li>
+                    <Detail title="Hvor lang er jeres leveringstid">
+                        <p>Maksimalt 3 dage med GLS.</p>
+                    </Detail>
+                </li>
+            </ul>
+        </Column>
+    </Row>
+    <Row>
+        <Column>
+            <h2>Returnering</h2>
+            <p>
+                Du har 14 dage, efter at du har modtaget produktet, til at
+                starte en returnering. Produktet må ikke være taget i brug i en
+                grad, så den ikke kan sælges igen.
+            </p>
+        </Column>
+        <Column>
+            <ul class="list faq__detailsMarginTop">
+                <li>
+                    <Detail title="Tilbyder I gratis returfragt">
+                        <p>
+                            Der bliver på nuværende tidspunk <em>ikke</em> tilbudt
+                            gratis returfragt.
+                        </p>
+                    </Detail>
+                </li>
+                <li>
+                    <Detail title="Hvordan starter jeg en returnering">
+                        <p>
+                            Kontakt os med en mail til
+                            <a class="link" href="mailto:support@surfstock.dk">
+                                support@surfstock.dk</a
+                            >. Så finder vi en løsning.
+                        </p>
+                    </Detail>
+                </li>
+            </ul>
+        </Column>
+    </Row>
+    <Row>
+        <Column>
+            <h2>Support</h2>
+            <p>
+                Har du problemer, eller kan du ikke finde svar på dit spørgsmål?
+            </p>
+            <p>
+                Du kan altid kontakte os ved at sende en mail direkte til <a
+                    class="link"
+                    href="mailto:support@surfstock.dk"
+                >
+                    support@surfstock.dk</a
+                >, eller ved at udfylde denne kontaktformular.
+            </p>
+        </Column>
+        <Column>
+            {/*go to /beksed-sendt after submit*/}
+            <form
+                class="form"
+                name="Surfstock Kontaktformular"
+                method="POST"
+                data-netlify="true"
+                action="/besked-sendt"
+                netlify-honeypot="surfstockFormField"
+            >
+                <label class="form__label">
+                    Navn
+                    <input
+                        class="form__input"
+                        type="text"
+                        name="name"
+                        required
+                    />
+                </label>
+
+                {/*honeypot field*/}
+                <label class="form__sff">
+                    Surfstock Field
+                    <input name="surfstockFormField" />
+                </label>
+
+                <label class="form__label">
+                    Email
+                    <input
+                        class="form__input"
+                        type="email"
+                        name="email"
+                        required
+                    />
+                </label>
+
+                <label class="form__label">
+                    Besked
+                    <textarea
+                        class="form__input"
+                        rows="4"
+                        name="message"
+                        required></textarea>
+                </label>
+
+                <button class="form__submit" type="submit">Send</button>
+            </form>
+        </Column>
+    </Row>
+</Layout>

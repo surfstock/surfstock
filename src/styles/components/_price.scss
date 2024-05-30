@@ -1,0 +1,13 @@
+.price {
+    display: flex;
+    flex-direction: column;
+    color: $color--pri-blue;
+    font-weight: 600;
+    font-size: $font--big;
+    &__old {
+        color: initial;
+        font-weight: initial;
+        font-size: $font--normal;
+        color: #757575;
+    }
+}

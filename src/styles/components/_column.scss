@@ -1,0 +1,9 @@
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+    &__wide{
+        flex: 5;
+    }
+}

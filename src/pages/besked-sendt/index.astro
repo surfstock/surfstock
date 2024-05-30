@@ -1,0 +1,19 @@
+---
+//page after form message is sent
+import Column from "../../components/Column.astro";
+import Row from "../../components/Row.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Besked sendt">
+    <meta slot="head" name="robots" content="noindex" />
+    <Row>
+        <Column>
+            <h1>Din besked er blevet sendt</h1>
+            <p>Vi har modtaget din besked og vil vende tilbage snarest muligt.</p>
+            <p>
+                Du kan trygt lukke denne fane eller <a class="link" href="/">gå til forsiden →</a>
+            </p>
+        </Column>
+    </Row>
+</Layout>

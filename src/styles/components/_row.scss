@@ -1,0 +1,12 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .row{
+        flex-direction: column;
+    }
+}

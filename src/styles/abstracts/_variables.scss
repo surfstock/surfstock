@@ -1,0 +1,20 @@
+//colors
+$color--pri-orange: #fa8102;
+$color--pri-blue: #547996;
+
+//breakpoints
+$breakpoint--sm: 576px;
+$breakpoint--md: 768px;
+$breakpoint--lg: 992px;
+$breakpoint--xl: 1200px;
+
+//font sizes
+$font--normal: 16px;
+$font--big: 24px;
+$font--huge: 32px;
+
+//shadows
+$shadow--text: 1px 1px rgba(0, 0, 0, 0.1), -1px 1px rgba(0, 0, 0, 0.1),
+    1px -1px rgba(0, 0, 0, 0.1), -1px -1px rgba(0, 0, 0, 0.1);
+$shadow--box: 0 5px 5px rgba(10, 10, 10, 0.1);
+$shadow--box-center: 0 0 5px rgba(10, 10, 10, 0.1);

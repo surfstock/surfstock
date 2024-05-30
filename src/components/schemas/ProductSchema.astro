@@ -1,0 +1,37 @@
+---
+import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
+import toSlugOrName from "../../utils/toSlugOrName";
+import toSlugOrName from "../../utils/toSlugOrName";
+
+//get the product and the collection from the props
+const { product, collection } = Astro.props;
+
+//declare the scema
+const schema = {
+    "@context": "http://schema.org",
+    "@type": "Product",
+    name:
+        toSlugOrName(product, "name") +
+        " " +
+        capitalizeFirstLetter(collection) +
+        " " +
+        product.data.type,
+    url: "https://surfstock.dk/" + toSlugOrName(product, "slug"),
+    image: "https://surfstock.dk" + product.data.image,
+    description: product.data.content,
+    brand: {
+        "@type": "Brand",
+        name: product.data.brand,
+    },
+    offers: {
+        "@type": "Offer",
+        priceCurrency: "DKK",
+        price: product.data.price,
+        itemCondition: "http://schema.org/NewCondition",
+        availability: "InStock",
+    },
+};
+---
+
+{/*generate the crawlable element with the schema*/}
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

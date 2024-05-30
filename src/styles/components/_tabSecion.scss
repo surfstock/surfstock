@@ -1,0 +1,48 @@
+.tabSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    border-bottom: 3px solid $color--pri-blue;
+    padding-bottom: 2rem;
+    &__navigation {
+        display: flex;
+        margin-bottom: 2rem;
+    }
+    &__button {
+        flex: 1;
+        padding-block: 1rem;
+        font-size: inherit;
+        font-family: inherit;
+        cursor: pointer;
+        background-color: transparent;
+        background: linear-gradient(
+            0deg,
+            rgba(84, 121, 150, 1) 0px,
+            rgba(84, 121, 150, 1) 3px,
+            transparent 3px
+        );
+        font-weight: 600;
+        color: black;
+        border: none;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        &--active {
+            background: linear-gradient(
+                180deg,
+                rgba(84, 121, 150, 1) 0px,
+                rgba(84, 121, 150, 1) 3px,
+                transparent 3px
+            );
+            border-left-color: $color--pri-blue;
+            border-right-color: $color--pri-blue;
+        }
+        &:first-of-type {
+            border-left-color: transparent;
+        }
+        &:last-of-type {
+            border-right-color: transparent;
+        }
+    }
+}

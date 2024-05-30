@@ -1,0 +1,51 @@
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, avenir next, avenir,
+        segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto,
+        arial, sans-serif;
+    font-weight: 400;
+    font-size: $font--normal;
+}
+h1 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    font-size: $font--huge;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    font-size: $font--big;
+}
+//https://gwfh.mranftl.com/fonts
+@font-face {
+    font-display: swap;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/inter-v13-latin-regular.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    src: url("/fonts/inter-v13-latin-600.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Oswald";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/fonts/oswald-v53-latin-500.woff2") format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "Oswald";
+    font-style: normal;
+    font-weight: 700;
+    src: url("/fonts/oswald-v53-latin-700.woff2") format("woff2");
+}

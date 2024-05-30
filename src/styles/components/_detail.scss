@@ -1,0 +1,9 @@
+.detail {
+    padding: 1rem;
+    border-bottom: 3px solid $color--pri-blue;
+    &:has([open]) {
+        .detail__summary {
+            margin-bottom: 5px;
+        }
+    }
+}

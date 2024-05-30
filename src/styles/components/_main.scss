@@ -1,0 +1,12 @@
+.main {
+    flex: 1;
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .main {
+        width: 90%;
+    }
+}

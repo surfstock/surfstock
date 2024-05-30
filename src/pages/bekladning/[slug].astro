@@ -1,0 +1,31 @@
+---
+//product page for apparel products
+//uses same ProductPage layout as every other product page
+import { getCollection } from "astro:content";
+
+//this funtion create the pages/paths for the products
+export async function getStaticPaths() {
+    //get all products
+    const products = await getCollection("beklædning");
+    //reurns the slug and the product object
+    return products.map((product) => ({
+        params: {
+            slug: toSlugOrName(product, "slug"),
+        },
+        props: { product },
+    }));
+}
+const { product } = Astro.props;
+import Layout from "../../layouts/Layout.astro";
+import ProductPage from "../../layouts/ProductPage.astro";
+import toSlugOrName from "../../utils/toSlugOrName";
+---
+
+<Layout title={toSlugOrName(product, "name")}>
+    {
+        product.data.content && (
+            <meta slot="head" name="description" content={product.data.content.substring(0, 150)} />
+        )
+    }
+    <ProductPage product={product} />
+</Layout>

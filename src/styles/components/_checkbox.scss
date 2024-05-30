@@ -1,0 +1,42 @@
+.checkbox{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+    &__input{
+        appearance: none;
+        border: 2px solid $color--pri-blue;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        border-radius: 50%;
+        &:checked{
+            &::after{
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $color--pri-orange;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .checkbox{
+        &__input{
+            width: 30px;
+            height: 30px;
+            &:checked{
+                &::after{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}

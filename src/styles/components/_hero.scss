@@ -1,0 +1,49 @@
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    background-image: url("/windsurfer.jpg");
+    height: 400px;
+    padding: 3rem;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    &__title {
+        position: relative;
+        z-index: 1;
+        font-size: 40px;
+        color: white;
+        text-transform: none;
+        max-width: 350px;
+        line-height: 120%;
+    }
+    &__gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, $color--pri-blue, transparent);
+    }
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .hero {
+        position: relative;
+        padding: 2rem;
+        justify-content: flex-start;
+        background-image: url("/windsurfer-mobil.jpg");
+        &__title {
+            font-size: $font--huge;
+            max-width: 240px;
+            line-height: 130%;
+        }
+        &__gradient {
+            background: linear-gradient(
+                -45deg,
+                transparent,
+                $color--pri-blue 75%
+            );
+        }
+    }
+}

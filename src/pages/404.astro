@@ -1,0 +1,46 @@
+---
+//default 404 page
+import { getCollection } from "astro:content";
+import Column from "../components/Column.astro";
+import Row from "../components/Row.astro";
+import Layout from "../layouts/Layout.astro";
+import ProductTile from "../components/ProductTile.astro";
+
+//get windsurf products to show the user
+let alternativeProducts = await getCollection("windsurf");
+alternativeProducts = alternativeProducts.filter(
+    (alternativeProduct) => alternativeProduct.data.type === "Board"
+);
+//get 6 random products from the list
+alternativeProducts.sort(() => 0.5 - Math.random());
+alternativeProducts = alternativeProducts.slice(0, 6);
+---
+
+<Layout title="404">
+    <meta slot="head" name="robots" content="noindex" />
+    <Row>
+        <Column>
+            <h1>404 | Side ikke fundet</h1>
+            <p>Vi kunne desværre ikke finde den side, som du ledte efter.</p>
+            <p><a class="link" href="/">Gå til forsiden →</a></p>
+            <p>
+                <a class="link" href="/faq"> Gå til vores FAQ underside → </a>
+            </p>
+            <h2>Udvalgte Produkter</h2>
+            <ul class="grid">
+                {
+                    alternativeProducts.map((product) => {
+                        return (
+                            <li class="grid__item">
+                                <ProductTile
+                                    product={product}
+                                    category={product.collection.replace("sup", "SUP")}
+                                />
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+        </Column>
+    </Row>
+</Layout>

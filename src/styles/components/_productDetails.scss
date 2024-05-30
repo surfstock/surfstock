@@ -1,0 +1,35 @@
+.productDetails {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    gap: 1rem;
+    text-transform: capitalize;
+    &__detail {
+        width: calc(50% - 0.5rem);
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        &:nth-of-type(4n + 3),
+        &:nth-of-type(4n) {
+            background-color: #f2f2f2;
+        }
+        &Title {
+            font-weight: 600;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .productDetails {
+        &__detail {
+            width: 100%;
+            &:nth-of-type(4n + 3),
+            &:nth-of-type(4n) {
+                background-color: white;
+            }
+            &:nth-of-type(2n) {
+                background-color: #f2f2f2;
+            }
+        }
+    }
+}

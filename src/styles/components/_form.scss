@@ -1,0 +1,43 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    &__label {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-weight: 600;
+    }
+    &__input {
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: 400;
+        background-color: white;
+        color: black;
+        border: 3px solid $color--pri-blue;
+        padding: 0.5rem;
+        border-radius: 0;
+        resize: vertical;
+        min-height: 40px;
+        max-height: 400px;
+    }
+    &__submit {
+        font-size: inherit;
+        font-family: inherit;
+        background-color: $color--pri-orange;
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1.5rem;
+        z-index: 1;
+        text-shadow: $shadow--text;
+        border: none;
+        align-self: flex-end;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &__sff {
+        display: none;
+    }
+}

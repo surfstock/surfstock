@@ -1,0 +1,36 @@
+.dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    &__select {
+        appearance: none;
+        cursor: pointer;
+        border-radius: 0;
+        padding: 0.5rem;
+        border: 3px solid $color--pri-blue;
+        position: relative;
+        width: 100%;
+        background-color: white;
+        color: black;
+        text-align: left;
+        font-family: inherit;
+        font-size: inherit;
+    }
+    &::after {
+        content: "❯";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+        right: 1rem;
+        color: $color--pri-blue;
+        pointer-events: none;
+    }
+    &--plus {
+        &::after {
+            content: "+";
+            color: $color--pri-blue;
+            font-size: $font--big;
+        }
+    }
+}

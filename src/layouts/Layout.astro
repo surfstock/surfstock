@@ -1,0 +1,29 @@
+---
+//default page layout
+import Head from "../components/base/Head.astro";
+import Header from "../components/base/Header.astro";
+import Footer from "../components/base/Footer.astro";
+import SnipcartInit from "../components/snipcart/SnipcartInit.astro";
+import MobileMenu from "../components/MobileMenu.astro";
+const { title } = Astro.props;
+---
+
+<html lang="da">
+    <head>
+        <Head title={title} />
+        <slot name="head" />
+    </head>
+    <body>
+        <SnipcartInit />
+        <header>
+            <Header />
+        </header>
+        <MobileMenu />
+        <main class="main" id="main">
+            <slot />
+        </main>
+        <footer>
+            <Footer />
+        </footer>
+    </body>
+</html>

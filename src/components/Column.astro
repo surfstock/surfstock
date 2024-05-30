@@ -1,0 +1,8 @@
+---
+const { wide } = Astro.props;
+const className = wide ? "column column__wide" : "column";
+---
+
+<div class={className}>
+    <slot />
+</div>

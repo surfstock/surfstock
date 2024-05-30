@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+const { product, category } = Astro.props;
+import toSlugOrName from "../utils/toSlugOrName";
+import formatPrice from "../utils/formatPrice";
+---
+
+<a
+    class="productTile"
+    href={`/${category.toLowerCase().replaceAll("æ", "a")}/` + toSlugOrName(product, "slug")}>
+    {/*calcualte the discount in percent*/}
+    {
+        product.data.oldPrice ? (
+            <span class="productTile__badge">
+                {"-" +
+                    (
+                        ((product.data.oldPrice - product.data.price) / product.data.oldPrice) *
+                        100
+                    ).toFixed(0) +
+                    "%"}
+            </span>
+        ) : (
+            ""
+        )
+    }
+    <Image
+        src={product.data.image}
+        alt={product.data.brand + " " + product.data.title}
+        class="productTile__image"
+        decoding="async"
+        loading="lazy"
+        height="300"
+        width="200"
+    />
+    <div class="productTile__content">
+        <hgroup class="capitalize">
+            <h2>
+                {product.data.brand}
+                {product.data.title}
+            </h2>
+            <p>
+                {category}
+                {product.data.type}
+                {product.data.year}
+            </p>
+        </hgroup>
+        <p class="price">
+            {
+                product.data.oldPrice && (
+                    <del class="price__old">{formatPrice(product.data.oldPrice)} DKK</del>
+                )
+            }
+            <span>{formatPrice(product.data.price)} DKK</span>
+        </p>
+    </div>
+</a>

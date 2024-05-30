@@ -1,0 +1,44 @@
+.grid {
+    list-style-type: none;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    min-width: 100%;
+    padding: 8px;
+    &__item {
+        width: calc(33% - 8px);
+    }
+    &--filterizr {
+        .grid__item {
+            width: 33%;
+            &[style*="opacity: 0"] {
+                z-index: -999;
+            }
+        }
+    }
+}
+@media screen and (max-width: $breakpoint--lg) {
+    .grid {
+        &__item {
+            width: calc(50% - 8px);
+        }
+        &--filterizr {
+            .grid__item {
+                width: 50%;
+            }
+        }
+    }
+}
+@media screen and (max-width: $breakpoint--sm) {
+    .grid {
+        &__item {
+            width: 100%;
+        }
+        &--filterizr {
+            .grid__item {
+                width: 100%;
+            }
+        }
+    }
+}

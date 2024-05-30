@@ -1,0 +1,17 @@
+---
+//sup category page
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import CategoryPage from "../../layouts/CategoryPage.astro";
+const category = "sup";
+const products = await getCollection(category);
+---
+
+<Layout title={category.toUpperCase()}>
+    <meta
+        slot="head"
+        name="description"
+        content="Alle vores billige sup produkter på restlageret. Billigt sup udstyr i ubrugt stand til nybegyndere, let øvede og øvede surfere."
+    />
+    <CategoryPage category={category.toUpperCase()} products={products} />
+</Layout>

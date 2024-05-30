@@ -1,0 +1,18 @@
+.buyButton {
+    background-color: $color--pri-orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    padding-block: 0.5rem;
+    font-size: $font--big;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    text-shadow: $shadow--text;
+    &:disabled {
+        background-color: #585858;
+        cursor: not-allowed;
+    }
+}

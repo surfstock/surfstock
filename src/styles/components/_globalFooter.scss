@@ -1,0 +1,36 @@
+.globalFooter {
+    background-color: $color--pri-blue;
+    color: white;
+    &__content {
+        width: 80%;
+        margin: auto;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        padding-block: 2rem;
+    }
+    &__info {
+        flex: 1;
+    }
+    &__title {
+        font-size: $font--big;
+        font-weight: 600;
+    }
+    &__list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media screen and (max-width: $breakpoint--sm) {
+    .globalFooter {
+        &__content {
+            width: 90%;
+            margin: auto;
+            flex-direction: column;
+        }
+    }
+}
