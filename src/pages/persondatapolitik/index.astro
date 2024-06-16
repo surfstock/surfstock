@@ -1,0 +1,137 @@
+---
+//faq page
+import Column from "../../components/Column.astro";
+import Row from "../../components/Row.astro";
+import Layout from "../../layouts/Layout.astro";
+import Wave from "../../components/Wave.astro";
+---
+
+<Layout title="Persondatapolitik">
+    <meta
+        slot="head"
+        name="description"
+        content="Surfstocks persondatapolitik. Læs om hvordan vi behandler dine persondata."
+    />
+    <Row>
+        <Column>
+            <Wave />
+            <h1>Surfstocks Persondatapolitik</h1>
+            <h2>Introduktion</h2>
+            <p>
+                Hos Surfstock tager vi beskyttelsen af dine persondata alvorligt. Denne
+                persondatapolitik beskriver, hvordan vi indsamler, bruger, opbevarer og beskytter
+                dine personoplysninger i overensstemmelse med gældende lovgivning. Surfstock er
+                dataansvarlig for behandlingen af dine personoplysninger. Har du spørgsmål til vores
+                behandling af dine data, kan du kontakte os på vores <a href="/faq" class="link"
+                    >FAQ & Support</a
+                >-side.
+            </p>
+
+            <h2>Indsamling af persondata</h2>
+            <p>Vi indsamler følgende data:</p>
+            <ul>
+                <li><p>Navn</p></li>
+                <li><p>Adresse</p></li>
+                <li><p>Email</p></li>
+                <li><p>Betalingsoplysninger</p></li>
+            </ul>
+
+            <h2>Metoder til indsamling</h2>
+            <p>Persondata indsamles på følgende måder:</p>
+            <ul>
+                <li>
+                    <p>Gennem købsprocessen på vores hjemmeside.</p>
+                </li>
+                <li>
+                    <p>Via kontaktformularen på vores hjemmeside.</p>
+                </li>
+            </ul>
+
+            <h2>Formål med behandling af persondata</h2>
+            <p>Vi bruger dine persondata til følgende formål:</p>
+            <ul>
+                <li>
+                    <p>
+                        <strong>Ordrehåndtering:</strong> For at kunne behandle og levere din ordre.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>Kundeservice:</strong> For at kunne besvare dine spørgsmål og håndtere
+                        eventuelle reklamationer.
+                    </p>
+                </li>
+            </ul>
+
+            <h2>Opbevaring og deling af persondata</h2>
+            <p>
+                Dine persondata opbevares og/eller deles sikkert hos vores tredjeparts
+                tjenesteudbydere:
+            </p>
+            <ul>
+                <li>
+                    <p>
+                        <strong>Stripe:</strong> Opbevaring og behandling af betalingsoplysninger, persondata
+                        og ordredata
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>Snipcart:</strong> Opbevaring og behandling af persondata og ordredata.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>Netlify:</strong> Opbevaring og behandling af persondata fra kontaktformularen.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>One:</strong> Opbevaring og behandling af samtlige emails (betalingsoplysninger,
+                        persondata og ordredata).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>SendGrid:</strong> Opbevaring af mailadresse.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>GLS:</strong> Opbevaring af adresse.
+                    </p>
+                </li>
+            </ul>
+
+            <h2>Dine rettigheder</h2>
+            <p>
+                Du har ret til at få indsigt i de persondata, vi behandler om dig samt ret til at få
+                rettet urigtige oplysninger. For at udøve dine rettigheder skal du kontakte os. Læs
+                mere om, hvordan du gør dette på vores <a href="/faq" class="link">FAQ & Support</a
+                >-side.
+            </p>
+
+            <h2>Opbevaringsperiode</h2>
+            <p>
+                Vi opbevarer dine persondata så længe, det er nødvendigt for at opfylde de formål,
+                de er indsamlet til, eller så længe det kræves i henhold til lovgivningen. Nogle
+                data kan gemmes i op til 3 år.
+            </p>
+
+            <h2>Ændringer til persondatapolitikken</h2>
+            <p>
+                Surfstock forbeholder sig retten til at ændre denne persondatapolitik. Ændringer vil
+                træde i kraft fra offentliggørelsesdatoen. Hvis du har spørgsmål til vores
+                persondatapolitik eller behandling af dine persondata, er du velkommen til at
+                kontakte os på vores <a href="/faq" class="link">FAQ & Support</a>-side.
+            </p>
+            <br />
+            <p>
+                <strong>
+                    Ved at benytte vores tjenester accepterer du denne persondatapolitik og
+                    behandlingen af dine persondata som beskrevet heri.</strong
+                >
+            </p>
+        </Column>
+    </Row>
+</Layout>
