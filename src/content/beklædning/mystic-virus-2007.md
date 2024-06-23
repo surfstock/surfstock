@@ -9,9 +9,9 @@ sizes:
     - extraPrice: 0
       size: M
     - extraPrice: 0
-      size: XL
+      size: L
     - extraPrice: 0
-      size: XXL
+      size: XL
 image: /productImages/bekladning/mystic-virus-2007-1.jpg
 details:
     - label: Neopren
