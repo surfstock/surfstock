@@ -8,6 +8,7 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import ProductTile from "../components/ProductTile.astro";
 import LocalBusinessSchema from "../components/schemas/LocalBusinessSchema.astro";
+import Banner from "../components/Banner.astro";
 
 //get windsurf products to show the user
 let alternativeProducts = await getCollection("windsurf");
@@ -15,9 +16,6 @@ const products = ["HD Tube", "NCX", "Kode Wood", "SDM 100", "V Grip", "POD Seat"
 alternativeProducts = alternativeProducts.filter((alternativeProduct) =>
     products.some((keyword) => alternativeProduct.data.title.includes(keyword))
 );
-//get 6 random products from the list
-alternativeProducts.sort(() => 0.5 - Math.random());
-alternativeProducts = alternativeProducts.slice(0, 6);
 ---
 
 <Layout title="Alt det en surfer drømmer om. Bare billigere.">
@@ -27,41 +25,33 @@ alternativeProducts = alternativeProducts.slice(0, 6);
         content="Køb billige windsurf og kitesurf produkter fra Surfstock. Vi har alt det en surfer drømmer om. Bare Billigere."
     />
     <LocalBusinessSchema />
+    <Banner text="Spar mindst 60% på alle våddragter!!!" />
     <Row>
         <Column>
             <div class="hero">
                 <Wave />
-                <h1 class="hero__title">
-                    Alt det en surfer drømmer om. Bare&nbsp;billigere.
-                </h1>
+                <h1 class="hero__title">Alt det en surfer drømmer om. Bare&nbsp;billigere.</h1>
                 <div class="hero__gradient"></div>
             </div>
             <ul class="categoryPreview">
                 <li class="categoryPreview__tile">
                     <p class="categoryPreview__title">Windsurf</p>
-                    <a class="categoryPreview__link" href="/windsurf"
-                        >Se produkter</a
-                    >
+                    <a class="categoryPreview__link" href="/windsurf">Se produkter</a>
                     <div class="categoryPreview__gradientBackground"></div>
                 </li>
                 <li class="categoryPreview__tile">
                     <p class="categoryPreview__title">Kitesurf</p>
-                    <a class="categoryPreview__link" href="/kitesurf"
-                        >Se produkter</a
-                    >
+                    <a class="categoryPreview__link" href="/kitesurf">Se produkter</a>
                     <div class="categoryPreview__gradientBackground"></div>
                 </li>
                 <li class="categoryPreview__tile">
                     <p class="categoryPreview__title">SUP</p>
-                    <a class="categoryPreview__link" href="/sup">Se produkter</a
-                    >
+                    <a class="categoryPreview__link" href="/sup">Se produkter</a>
                     <div class="categoryPreview__gradientBackground"></div>
                 </li>
                 <li class="categoryPreview__tile">
                     <p class="categoryPreview__title">Beklædning</p>
-                    <a class="categoryPreview__link" href="/bekladning"
-                        >Se produkter</a
-                    >
+                    <a class="categoryPreview__link" href="/bekladning">Se produkter</a>
                     <div class="categoryPreview__gradientBackground"></div>
                 </li>
             </ul>
@@ -81,10 +71,9 @@ alternativeProducts = alternativeProducts.slice(0, 6);
             <Wave />
             <h2>Hvad er Surfstock?</h2>
             <p>
-                Surfstock er et restlager fra en tidligere dansk surfbutik, som
-                vi desværre blev nødt til at lukke ned. Vi har dog stadig en
-                masse fede surfprodukter tilbage, som vi nu tilbyder vores
-                kunder til uhørt lave priser.
+                Surfstock er et restlager fra en tidligere dansk surfbutik, som vi desværre blev
+                nødt til at lukke ned. Vi har dog stadig en masse fede surfprodukter tilbage, som vi
+                nu tilbyder vores kunder til uhørt lave priser.
             </p>
             <a href="/faq" class="link">Se mere på vores FAQ underside →</a>
         </Column>
@@ -99,10 +88,7 @@ alternativeProducts = alternativeProducts.slice(0, 6);
                             <li class="grid__item">
                                 <ProductTile
                                     product={product}
-                                    category={product.collection.replace(
-                                        "sup",
-                                        "SUP"
-                                    )}
+                                    category={product.collection.replace("sup", "SUP")}
                                 />
                             </li>
                         );
