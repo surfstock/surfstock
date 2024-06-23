@@ -11,8 +11,9 @@ import LocalBusinessSchema from "../components/schemas/LocalBusinessSchema.astro
 
 //get windsurf products to show the user
 let alternativeProducts = await getCollection("windsurf");
-alternativeProducts = alternativeProducts.filter(
-    (alternativeProduct) => alternativeProduct.data.type === "Board"
+const products = ["HD Tube", "NCX", "Kode Wood", "SDM 100", "V Grip", "POD Seat"];
+alternativeProducts = alternativeProducts.filter((alternativeProduct) =>
+    products.some((keyword) => alternativeProduct.data.title.includes(keyword))
 );
 //get 6 random products from the list
 alternativeProducts.sort(() => 0.5 - Math.random());
