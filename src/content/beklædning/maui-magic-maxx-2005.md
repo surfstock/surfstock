@@ -19,9 +19,9 @@ sizes:
     - extraPrice: 0
       size: XL (orange)
     - extraPrice: 0
-      size: XL (blå)
+      size: XXL (blå)
     - extraPrice: 0
-      size: XL (orange)
+      size: XXL (orange)
 image: /productImages/bekladning/maui-magic-maxx-shorty-2005-1.jpg
 content: >-
 ---
