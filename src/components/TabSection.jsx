@@ -136,8 +136,8 @@ export default function TabSection({ product, collection }) {
                     Danmark med GLS Standardlevering (2-3 arbejdsdage).
                 </p>
                 <p>
-                    Boards og sejl kan kun blive leveret til adresser i
-                    Storkøbenhavn eller afhentes ved restlageret på
+                    Boards, master, bomme og sejl kan kun blive leveret til
+                    adresser i Storkøbenhavn eller afhentes ved restlageret på
                     Frederiksberg efter aftale.
                 </p>
             </div>

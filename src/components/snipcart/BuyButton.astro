@@ -12,7 +12,10 @@ let sizes = product.data.sizes
 
 //check product trype to decalre weight used for calculation shipping methods
 const productWeight =
-    product.data.type === "Board" || product.data.type === "Mast" || product.data.type === "Sejl"
+    product.data.type === "Board" ||
+    product.data.type === "Mast" ||
+    product.data.type === "Sejl" ||
+    product.data.type === "Bom"
         ? 1000
         : 0;
 

@@ -72,6 +72,7 @@ alternativeProducts = alternativeProducts.slice(0, 6);
         </p>
         <Segment title="Levering">
             {
+                product.data.type === "Bom" ||
                 product.data.type === "Board" ||
                 product.data.type === "Sejl" ||
                 product.data.type === "Mast" ? (
