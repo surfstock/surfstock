@@ -40,6 +40,11 @@ fetch(`/api/productstock/${productID}`)
             }
             //add stock quantity on the option
             option.innerText = option.innerText + "("+variant.stock+" stk. tilbage)"
+
+            //add available size to the buy button
+            const button = document.getElementById("buy-button");
+            const select = document.getElementById("size");
+            button.setAttribute("data-item-custom1-value", select.value);
         });
     }
 })
