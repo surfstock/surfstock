@@ -3,7 +3,7 @@ title: Razer Sko
 brand: Mystic
 type: Sko
 year: 2006
-price: 125
+price: 149
 oldPrice: 395
 sizes:
     - extraPrice: 0
