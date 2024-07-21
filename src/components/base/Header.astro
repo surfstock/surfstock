@@ -29,40 +29,24 @@ const products = windsurf.concat(bekladning, kitesurf);
                 </figcaption>
                 <ul class="globalHeader__dropdownList">
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/windsurf?preFilter=Board">Boards</a
+                        <a class="globalHeader__link" href="/windsurf?preFilter=Board">Boards</a>
+                    </li>
+                    <li>
+                        <a class="globalHeader__link" href="/windsurf?preFilter=Sejl">Sejl</a>
+                    </li>
+                    <li>
+                        <a class="globalHeader__link" href="/windsurf?preFilter=Bom">Bomme</a>
+                    </li>
+                    <li>
+                        <a class="globalHeader__link" href="/windsurf?preFilter=Trapez">Trapezer</a>
+                    </li>
+                    <li>
+                        <a class="globalHeader__link" href="/windsurf?preFilter=Forlænger"
+                            >Forlængere</a
                         >
                     </li>
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/windsurf?preFilter=Sejl">Sejl</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/windsurf?preFilter=Bom">Bomme</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/windsurf?preFilter=Trapez">Trapezer</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/windsurf?preFilter=Forlænger">Forlængere</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/windsurf?preFilter=Mast">Master</a
-                        >
+                        <a class="globalHeader__link" href="/windsurf?preFilter=Mast">Master</a>
                     </li>
                 </ul>
             </figure>
@@ -72,16 +56,10 @@ const products = windsurf.concat(bekladning, kitesurf);
                 </figcaption>
                 <ul class="globalHeader__dropdownList">
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/kitesurf?preFilter=Drage">Drager</a
-                        >
+                        <a class="globalHeader__link" href="/kitesurf?preFilter=Drage">Drager</a>
                     </li>
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/kitesurf?preFilter=Board">Boards</a
-                        >
+                        <a class="globalHeader__link" href="/kitesurf?preFilter=Board">Boards</a>
                     </li>
                 </ul>
             </figure>
@@ -91,71 +69,50 @@ const products = windsurf.concat(bekladning, kitesurf);
                 </figcaption>
                 <ul class="globalHeader__dropdownList">
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/sup?preFilter=Pagaj">Pagajer</a
-                        >
+                        <a class="globalHeader__link" href="/sup?preFilter=Pagaj">Pagajer</a>
                     </li>
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/sup?preFilter=Hydration Pack"
-                        >
+                        <a class="globalHeader__link" href="/sup?preFilter=Hydration Pack">
                             Hydration&nbsp;Packs
                         </a>
                     </li>
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/sup?preFilter=Leash">Leashes</a
-                        >
+                        <a class="globalHeader__link" href="/sup?preFilter=Leash">Leashes</a>
                     </li>
                 </ul>
             </figure>
             <figure class="globalHeader__dropdown">
                 <figcaption>
-                    <a class="globalHeader__link" href="/bekladning"
-                        >Beklædning</a
-                    >
+                    <a class="globalHeader__link" href="/bekladning">Beklædning</a>
                 </figcaption>
                 <ul class="globalHeader__dropdownList">
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/bekladning?preFilter=Termo">Termo</a
+                        <a class="globalHeader__link" href="/bekladning?preFilter=Termo">Termo</a>
+                    </li>
+                    <li>
+                        <a class="globalHeader__link" href="/bekladning?preFilter=Våddragt"
+                            >Våddragter</a
                         >
                     </li>
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/bekladning?preFilter=Våddragt">Våddragter</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/bekladning?preFilter=Impact Vest"
-                        >
+                        <a class="globalHeader__link" href="/bekladning?preFilter=Impact Vest">
                             Impact&nbsp;Veste
                         </a>
                     </li>
                     <li>
-                        <a
-                            class="globalHeader__link"
-                            href="/bekladning?preFilter=Undervest"
-                        >
+                        <a class="globalHeader__link" href="/bekladning?preFilter=Undervest">
                             Underveste
                         </a>
+                    </li>
+                    <li>
+                        <a class="globalHeader__link" href="/bekladning?preFilter=Sko">Sko</a>
                     </li>
                 </ul>
             </figure>
         </li>
         <li class="globalHeader__group globalHeader__group--fill">
             <Search client:load products={products} />
-            <a
-                class="snipcart-checkout globalHeader__button"
-                aria-label="Åben kurv"
-            >
+            <a class="snipcart-checkout globalHeader__button" aria-label="Åben kurv">
                 <img
                     src="/icons/cart.svg"
                     alt="Cart Icon"
@@ -170,8 +127,7 @@ const products = windsurf.concat(bekladning, kitesurf);
             <button
                 class="globalHeader__button showMobile"
                 aria-label="Åben navigation"
-                id="openMobileMenu"
-            >
+                id="openMobileMenu">
                 <img
                     src="/icons/menu.svg"
                     alt="Cart Icon"
@@ -189,9 +145,7 @@ const products = windsurf.concat(bekladning, kitesurf);
     document.querySelector("#openMobileMenu").addEventListener("click", () => {
         dialog.open = true;
     });
-    document
-        .querySelector(".dialog__closeButton")
-        .addEventListener("click", () => {
-            dialog.open = false;
-        });
+    document.querySelector(".dialog__closeButton").addEventListener("click", () => {
+        dialog.open = false;
+    });
 </script>
