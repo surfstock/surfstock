@@ -5,6 +5,7 @@ export default function TabSection({ product, collection }) {
     //decalre states
     const [activeTab, setActiveTab] = useState("Beskrivelse");
     const showDescription = product.content?.length > 0;
+    const fixedCollection = collection.toLowerCase().replace("æ", "a");
 
     //if no description, begin on details
     useEffect(() => {
@@ -66,7 +67,10 @@ export default function TabSection({ product, collection }) {
                         </span>
                         <a
                             href={
-                                "/" + collection + "?preFilter=" + product.brand
+                                "/" +
+                                fixedCollection +
+                                "?preFilter=" +
+                                product.brand
                             }
                             className="link"
                         >
@@ -79,19 +83,27 @@ export default function TabSection({ product, collection }) {
                         </span>
                         <a
                             href={
-                                "/" + collection + "?preFilter=" + product.type
+                                "/" +
+                                fixedCollection +
+                                "?preFilter=" +
+                                product.type
                             }
                             className="link"
                         >
                             {product.type}
                         </a>
                     </li>
-                    <li className="productDetails__detail" key={collection}>
+                    <li
+                        className="productDetails__detail"
+                        key={fixedCollection}
+                    >
                         <span className="productDetails__detailTitle">
                             Kategori:
                         </span>
-                        <a href={"/" + collection} className="link">
-                            {collection}
+                        <a href={"/" + fixedCollection} className="link">
+                            {fixedCollection
+                                .replace("sup", "SUP")
+                                .replace("bekladning", "beklædning")}
                         </a>
                     </li>
                     {product?.year && (
@@ -105,7 +117,7 @@ export default function TabSection({ product, collection }) {
                             <a
                                 href={
                                     "/" +
-                                    collection +
+                                    fixedCollection +
                                     "?preFilter=" +
                                     product.year
                                 }
