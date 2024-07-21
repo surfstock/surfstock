@@ -9,7 +9,7 @@ sizes:
     - extraPrice: 0
       size: "34"
     - extraPrice: 0
-      size: "35-26"
+      size: "35-36"
     - extraPrice: 0
       size: "37"
     - extraPrice: 0
