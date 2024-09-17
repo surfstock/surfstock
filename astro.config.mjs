@@ -8,5 +8,5 @@ export default defineConfig({
     output: "hybrid",
     site: "https://surfstock.dk",
     integrations: [react(), sitemap()],
-    adapter: netlify(),
+    adapter: netlify({ imageCDN: false }),
 });
